@@ -2,7 +2,7 @@
 
 Derivative of the [NYTimes Objective-C Style Guide](https://github.com/NYTimes/objective-c-style-guide) from which it was forked.
 
-This style guide outlines the coding conventions of the iOS team at Skillz. We welcome your feedback in [issues](https://github.com/Skillz/objetive-c-style-guide/issues). 
+This style guide outlines the coding conventions of the iOS team at Skillz. 
 
 ## Introduction
 
