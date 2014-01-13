@@ -146,9 +146,9 @@ Property definitions should be used in place of naked instance variables wheneve
 **For example:**
 
 ```objc
-@interface NYTSection: NSObject
+@interface SKZSection: NSObject
 
-@property (nonatomic) NSString *headline;
+@property (nonatomic) NSString *tournamentName;
 
 @end
 ```
@@ -156,8 +156,8 @@ Property definitions should be used in place of naked instance variables wheneve
 **Not:**
 
 ```objc
-@interface NYTSection : NSObject {
-    NSString *headline;
+@interface SKZSection : NSObject {
+    NSString *tournamentName;
 }
 ```
 
@@ -179,12 +179,12 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix (e.g. `NYT`) should always be used for class names and constants, however may be omitted for Core Data entity names. Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
+A three letter prefix (e.g. `SKZ`) should always be used for class names and constants, however may be omitted for Core Data entity names. Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **For example:**
 
 ```objc
-static const NSTimeInterval NYTArticleViewControllerNavigationFadeAnimationDuration = 0.3;
+static const NSTimeInterval SKZResultsViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not:**
@@ -289,15 +289,15 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **For example:**
 
 ```objc
-static NSString * const NYTAboutViewControllerCompanyName = @"The New York Times Company";
+static NSString * const SKZAboutViewControllerCompanyName = @"Skillz, Inc";
 
-static const CGFloat NYTImageThumbnailHeight = 50.0;
+static const CGFloat SKZImageThumbnailHeight = 50.0;
 ```
 
 **Not:**
 
 ```objc
-#define CompanyName @"The New York Times Company"
+#define CompanyName @"Skillz, Inc"
 
 #define thumbnailHeight 2
 ```
@@ -309,20 +309,20 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, NYTAdRequestState) {
-    NYTAdRequestStateInactive,
-    NYTAdRequestStateLoading
+typedef NS_ENUM(NSInteger, SKZAdRequestState) {
+    SKZAdRequestStateInactive,
+    SKZAdRequestStateLoading
 };
 ```
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `NYTPrivate` or `private`) should never be used unless extending another class.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `SKZPrivate` or `private`) should never be used unless extending another class.
 
 **For example:**
 
 ```objc
-@interface NYTAdvertisement ()
+@interface SKZAdvertisement ()
 
 @property (nonatomic, strong) GADBannerView *googleAdView;
 @property (nonatomic, strong) ADBannerView *iAdView;
@@ -414,6 +414,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 If ours doesn't fit your tastes, have a look at some other style guides:
 
+* [NYTimes](https://github.com/NYTimes/objective-c-style-guide)
 * [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
 * [GitHub](https://github.com/github/objective-c-conventions)
 * [Adium](https://trac.adium.im/wiki/CodingStyle)
