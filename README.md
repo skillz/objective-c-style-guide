@@ -17,6 +17,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Spacing](#spacing)
+  * [Assignment Operator](#assignment-operator)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
 * [Error handling](#error-handling)
@@ -66,6 +67,19 @@ if (user.isHappy) {
 ```
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
 * `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
+
+### Assignment Operator
+
+Vertically align the assignment operators when it improves readability.
+
+**For example:**
+```objc
+NSBundle *mainBundle                      = [NSBundle mainBundle];
+NSString *locationServiceUsageDescription = [[mainBundle infoDictionary] objectForKey:@"NSLocationWhenInUseUsageDescription"];
+```
+
+Check out the [Xalign](https://github.com/qfish/XAlign) plugin for fast vertical
+alignment.
 
 ## Conditionals
 
