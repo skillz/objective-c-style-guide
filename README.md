@@ -404,6 +404,17 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
 
+
+## Interface Builder
+The following sectins contain information about how we prefer to work with Interface Builder
+
+### Autolayout 
+
+Be aware that Interface Builder will add `misplaced=YES` to any views that have frames that do not match it's constraints. Avoid committing this up to master by fixing them as shown here:
+
+![Fix Frames](http://i.imgur.com/wrM3l63.gif)
+
+
 ## Xcode project
 
 The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
