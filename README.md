@@ -143,12 +143,17 @@ Asterisks indicating pointers belong with the variable, e.g., `NSString *text` n
 
 Property definitions should be used in place of naked instance variables whenever possible. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
+Property definitions should be organized in some logical way, typically IBOutlets, followed by Objects, followed by primatives.
+
 **For example:**
 
 ```objc
 @interface SKZSection: NSObject
 
-@property (nonatomic) NSString *tournamentName;
+@property (weak) IBOutlet UIView *someview;
+@property NSString *tournamentName;
+@property NSString *someOtherString;
+@property BOOL someBool;
 
 @end
 ```
@@ -158,8 +163,42 @@ Property definitions should be used in place of naked instance variables wheneve
 ```objc
 @interface SKZSection : NSObject {
     NSString *tournamentName;
+    BOOL someBool;
+    NSString someOtherString;
+    IBOutlet UIView *someView;
 }
 ```
+
+###Attributes###
+
+Property declarations should only specify attributes that are absolutely required, in all other cases allow the defaults to manifest. Less text is better.
+
+Only use nonatomic if absolutely neccesary, either for speed or for overriding a synthesized setter or getter.
+
+**For example:**
+
+```objc
+
+@property (weak) IBOutlet UIView *someOutlet; //Defaults to atomic
+
+@property (nonatomic) NSString *stringWithOverriddenAccessorOrMutator; //Must be nonatomic to override setter.
+
+@property NSString *someString; //Defaults to strong, atomic
+@property NSInteger someInteger; //Defaults to assign, atomic
+@property BOOL someBoolean; //Defaults to assign, atomic
+
+```
+
+**Not**
+
+```objc
+@property (weak, nonatomic) IBOutlet UIView *someOutlet; //Defaults to atomic
+@property (strong, nonatomic) NSString *someString; //Defaults to strong, atomic
+@property (assign, nonatomic) NSInteger someInteger; //Defaults to assign, atomic
+@property (assign, nonatomic) BOOL someBoolean; //Defaults to assign, atomic
+```
+
+[More Info](http://stackoverflow.com/questions/588866/whats-the-difference-between-the-atomic-and-nonatomic-attributes)
 
 ## Naming
 
@@ -324,9 +363,9 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface SKZAdvertisement ()
 
-@property (nonatomic, strong) GADBannerView *googleAdView;
-@property (nonatomic, strong) ADBannerView *iAdView;
-@property (nonatomic, strong) UIWebView *adXWebView;
+@property GADBannerView *googleAdView;
+@property ADBannerView *iAdView;
+@property UIWebView *adXWebView;
 
 @end
 ```
